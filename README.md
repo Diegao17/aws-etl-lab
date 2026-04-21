@@ -40,11 +40,11 @@ AWS Glue crawler scans data from S3 and detects schema automatically.
 
 ## 📁 Project Structure
 aws-etl-lab/
-├── README.md
-├── gluecrawler.cf.yml
-├── queries.sql
-├── screenshots/
-└── report/
+- README.md
+- gluecrawler.cf.yml
+- queries.sql
+- screenshots/
+- report/
 
 ## 📌 Author
 Diego J. Garcia Espinoza
