@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  CFNCrawlerName:
+    Type: String
+    Default: cfn-crawler-weather
+  CFNDatabaseName:
+    Type: String
+    Default: cfn-database-weather
+  CFNTablePrefixName:
+    Type: String
+    Default: cfn_sample_1-weather
+
+Resources:
+  CFNDatabaseWeather:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseInput:
+        Name: !Ref CFNDatabaseName
+
+  CFNCrawlerWeather:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Ref CFNCrawlerName
+      Role: gluelab
+      DatabaseName: !Ref CFNDatabaseName
+      Targets:
+        S3Targets:
+          - Path: "s3://noaa-ghcn-pds/csv/by_year/"
