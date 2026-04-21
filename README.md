@@ -1,7 +1,7 @@
 # AWS ETL Laboratory - Glue + Athena
 
 ## 📌 Overview
-This project demonstrates a complete ETL (Extract, Transform, Load) workflow using AWS services. The lab includes data extraction using AWS Glue, querying using Amazon Athena, and infrastructure automation using AWS CloudFormation.
+This project demonstrates a complete ETL workflow using AWS services, including AWS Glue, Amazon Athena, and CloudFormation.
 
 ## ⚙️ Technologies Used
 - AWS Glue
@@ -11,37 +11,40 @@ This project demonstrates a complete ETL (Extract, Transform, Load) workflow usi
 - AWS CLI
 
 ## 📊 Dataset
-Public dataset used:
 s3://noaa-ghcn-pds/csv/by_year/
 
 ## 🔄 ETL Process
+### Extract
+AWS Glue crawler scans data from S3 and detects schema automatically.
 
-### 1. Extract
-- AWS Glue crawler scans data from S3
-- Automatically detects schema
-- Stores metadata in AWS Glue Data Catalog
+### Transform
+- Schema modified for better readability  
+- Data filtered between 1950–2015  
+- Converted to Parquet format  
 
-### 2. Transform
-- Schema modified for better readability
-- Data filtered between 1950–2015
-- Converted to Parquet format
-
-### 3. Load & Analyze
-- Data queried using Amazon Athena
-- View created for TMAX values
-- Aggregation query performed
-
-## 📜 CloudFormation
-The infrastructure was automated using a YAML template to:
-- Create a Glue database
-- Deploy a crawler
-- Configure data source
+### Load & Analyze
+- Data queried using Athena  
+- View created for TMAX values  
+- Aggregation query executed  
 
 ## 📈 Results
-- Initial query: ~98 GB scanned
-- Optimized query: ~2.45 GB scanned
-- Execution time reduced significantly (~1 min → ~25 sec)
+- Initial scan: ~98 GB  
+- Optimized scan: ~2.45 GB  
+- Execution time reduced (~1 min → ~25 sec)  
 
 ## 🚀 How to Run
+1. Configure AWS CLI  
+2. Deploy CloudFormation  
+3. Run crawler  
+4. Execute queries in Athena  
 
-1. Configure AWS CLI:
+## 📁 Project Structure
+aws-etl-lab/
+├── README.md
+├── gluecrawler.cf.yml
+├── queries.sql
+├── screenshots/
+└── report/
+
+## 📌 Author
+Diego J. Garcia Espinoza
